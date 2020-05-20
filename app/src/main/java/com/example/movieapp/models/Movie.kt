@@ -1,54 +1,59 @@
 package com.example.movieapp.models
 
+import android.os.Parcelable
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class Movie(
     @SerializedName("popularity")
-    val popularity: Float,
+    val popularity : Float,
 
     @SerializedName("vote_count")
-    val vote_count: Int,
+    val vote_count : Int,
 
     @SerializedName("video")
-    val video: Boolean,
+    val video : Boolean,
+
 
     @SerializedName("poster_path")
-    val poster_path: String,
+    val poster_path : String,
 
     @SerializedName("id")
-    val id: Int,
+    val id : Int,
 
     @SerializedName("adult")
-    val adult: Boolean,
+    val adult : Boolean,
 
     @SerializedName("backdrop_path")
-    val backdrop_path: String,
+    val backdrop_path : String,
 
     @SerializedName("original_language")
-    val original_language: String,
+    val original_language : String,
 
     @SerializedName("original_title")
-    val original_title: String,
+    val original_title : String,
 
-    @SerializedName("genreIds")
-    val genreIds: List<Int>,
+    @SerializedName("genre_ids")
+    val genre_ids : List<Int>,
 
     @SerializedName("title")
-    val title: String,
+    val title : String,
 
     @SerializedName("vote_average")
-    val vote_average: Float,
-
-    @SerializedName("overview")
-    val overview: String,
+    val vote_average : Float,
 
     @SerializedName("release_date")
-    val release_date: String) {
+    val release_date : String,
+
+    @SerializedName("overview")
+    val overview : String) : Parcelable {
     companion object {
         fun getMovies() : List<Movie> {
            return Gson().fromJson(MovieDatabase.database,object : TypeToken<List<Movie>>(){}.type)
         }
+
     }
 }
